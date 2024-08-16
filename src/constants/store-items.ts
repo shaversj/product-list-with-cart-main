@@ -1,3 +1,21 @@
+export const cartItems = [
+    {
+        "name": "Classic Tiramisu",
+        "price": 5.50,
+        "quantity": 1
+    },
+    {
+        "name": "Vanilla Bean Crème Brûlée",
+        "price": 7.00,
+        "quantity": 4
+    },
+    {
+        "name": "Vanilla Panna Cotta",
+        "price": 6.50,
+        "quantity": 2
+    }
+]
+
 export const desserts = [
     {
         "image": {
