@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import {Red_Hat_Text} from "next/font/google";
+import { Red_Hat_Text } from "next/font/google";
 import "./globals.css";
 
-const redHatText = Red_Hat_Text({ subsets: ["latin"], weight: "variable", display: "swap" , variable: "--font-red-hat-text" });
+const redHatText = Red_Hat_Text({ subsets: ["latin"], weight: "variable", display: "swap", variable: "--font-red-hat-text" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={redHatText.variable}>
-        {children}
+        <main className={"min-h-screen bg-rose-50 font-red-hat-text"}>{children}</main>
       </body>
     </html>
   );
