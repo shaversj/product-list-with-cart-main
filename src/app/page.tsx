@@ -3,16 +3,21 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className={"mx-auto grid lg:w-[76rem] lg:grid-cols-[65.79%,31.58%] lg:grid-rows-2 lg:gap-x-8"}>
+    <div className={"md:w-[43rem] md:px-0 mx-auto sm:px-6 lg:grid lg:w-[76rem] lg:grid-cols-[65.79%,31.58%] lg:grid-rows-2 lg:gap-x-8"}>
       <section className={"lg:row-span-full"}>
         <h1 className={"pt-[5.5rem] text-[3.5rem] font-bold leading-[120%] text-rose-900"}>Desserts</h1>
 
-        <div className={"grid grid-cols-3 gap-x-6 gap-y-8 pt-8 lg:w-[50rem]"}>
+        <div className={"md:grid-cols-3 md:gap-x-6 grid gap-y-8 pt-8 lg:w-[50rem]"}>
           {desserts.map((dessert) => (
             <div key={dessert.name} className="flex flex-col items-start">
-              <div className={"relative h-[240px] w-[250.67px]"}>
-                <Image className={"rounded-lg"} src={dessert.image.desktop} alt={dessert.name} width={250.67} height={240} />
-                <button className={"absolute -bottom-[8%] left-1/2 h-[44px] w-[160px] -translate-x-1/2 transform rounded-full border border-rose-400 bg-white"}>
+              <div className={"md:w-[0.833rem] md:h-[13.25rem] relative h-[13.25rem] w-[20.438rem] lg:h-[15rem] lg:w-[15.667px]"}>
+                <picture>
+                  <source media="(min-width:1440px)" srcSet={dessert.image.desktop} width={250.67} height={240} type="image/jpeg" />
+                  <source media="(min-width:768px)" srcSet={dessert.image.tablet} width={213.33} height={212} type="image/jpeg" />
+                  <img className={"rounded-lg"} src={dessert.image.mobile} alt={dessert.name} width={327} height={212} />
+                </picture>
+                {/*<Image className={"rounded-lg"} src={dessert.image.desktop} alt={dessert.name} width={250.67} height={240} />*/}
+                <button className={"absolute -bottom-[8%] left-1/2 h-[2.75rem] w-[10rem] -translate-x-1/2 transform rounded-full border border-rose-400 bg-white"}>
                   <span className={"text-[0.875rem] font-semibold leading-[150%] text-rose-900"}>Add to Cart</span>
                 </button>
               </div>
@@ -25,7 +30,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={"rounded-lg bg-white p-6 lg:col-start-2 lg:row-start-1 lg:row-end-1 lg:mt-[5.5rem]"}>
+      <section className={"mt-[2rem] rounded-lg bg-white p-6 lg:col-start-2 lg:row-start-1 lg:row-end-1 lg:mt-[5.5rem]"}>
         <h2 className={"text-[1.5rem] font-bold leading-[125%] text-red"}>Your Cart (7)</h2>
 
         <div className={"divide-y divide-rose-100"}>
