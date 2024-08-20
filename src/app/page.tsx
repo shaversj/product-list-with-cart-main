@@ -1,5 +1,4 @@
 import { cartItems, desserts } from "@/constants/store-items";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -16,9 +15,18 @@ export default function Home() {
                   <source media="(min-width:768px)" srcSet={dessert.image.tablet} width={213.33} height={212} type="image/jpeg" />
                   <img className={"rounded-lg"} src={dessert.image.mobile} alt={dessert.name} width={327} height={212} />
                 </picture>
-                <button className={"absolute -bottom-[8%] left-1/2 h-[2.75rem] w-[10rem] -translate-x-1/2 transform rounded-full border border-rose-400 bg-white"}>
-                  <span className={"text-[0.875rem] font-semibold leading-[150%] text-rose-900"}>Add to Cart</span>
-                </button>
+                {/*<button className={"absolute -bottom-[8%] left-1/2 h-[2.75rem] w-[10rem] -translate-x-1/2 transform rounded-full border border-rose-400 bg-white"}>*/}
+                {/*  <span className={"text-[0.875rem] font-semibold leading-[150%] text-rose-900"}>Add to Cart</span>*/}
+                {/*</button>*/}
+                <div className={"absolute -bottom-[8%] left-1/2 flex h-[2.75rem] w-[10rem] -translate-x-1/2 transform items-center justify-center rounded-full border border-rose-400 bg-red"}>
+                  <button className={"mr-auto pl-3"}>
+                    <img src={"/assets/images/icon-subtract.svg"} alt={"Subtract to Cart"} className={"inline-block"} />
+                  </button>
+                  <span className={"text-[0.875rem] font-semibold leading-[150%] text-white"}>4</span>
+                  <button className={"ml-auto pr-3"}>
+                    <img src={"/assets/images/icon-add.svg"} alt={"Add to Cart"} className={"inline-block"} />
+                  </button>
+                </div>
               </div>
 
               <h2 className={"pt-[2.375rem] text-[0.875rem] leading-[150%] text-rose-500"}>{dessert.name}</h2>
