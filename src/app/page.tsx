@@ -16,7 +16,6 @@ export default function Home() {
                   <source media="(min-width:768px)" srcSet={dessert.image.tablet} width={213.33} height={212} type="image/jpeg" />
                   <img className={"rounded-lg"} src={dessert.image.mobile} alt={dessert.name} width={327} height={212} />
                 </picture>
-                {/*<Image className={"rounded-lg"} src={dessert.image.desktop} alt={dessert.name} width={250.67} height={240} />*/}
                 <button className={"absolute -bottom-[8%] left-1/2 h-[2.75rem] w-[10rem] -translate-x-1/2 transform rounded-full border border-rose-400 bg-white"}>
                   <span className={"text-[0.875rem] font-semibold leading-[150%] text-rose-900"}>Add to Cart</span>
                 </button>
