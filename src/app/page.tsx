@@ -10,7 +10,7 @@ export default function Home() {
         <div className={"md:grid-cols-3 md:gap-x-6 grid gap-y-8 pt-8 lg:w-[50rem]"}>
           {desserts.map((dessert) => (
             <div key={dessert.name} className="flex flex-col items-start">
-              <div className={"md:w-[0.833rem] md:h-[13.25rem] relative h-[13.25rem] w-[20.438rem] lg:h-[15rem] lg:w-[15.667px]"}>
+              <div className={"md:w-[13.333rem] md:h-[13.25rem] relative h-[13.25rem] w-[20.438rem] lg:h-[15rem] lg:w-[15.667rem]"}>
                 <picture>
                   <source media="(min-width:1440px)" srcSet={dessert.image.desktop} width={250.67} height={240} type="image/jpeg" />
                   <source media="(min-width:768px)" srcSet={dessert.image.tablet} width={213.33} height={212} type="image/jpeg" />
