@@ -1,7 +1,12 @@
+"use client";
+
 import { cartItems, desserts } from "@/constants/store-items";
-import DessertCard from "@/components/DessertCard";
+import ProductCard from "@/components/ProductCard";
+import useCart from "@/hooks/useCart";
 
 export default function Home() {
+  const { cart, dispatch } = useCart({ initialCart: { products: [] } });
+
   return (
     <div className={"md:w-[43rem] md:px-0 mx-auto sm:px-6 lg:grid lg:w-[76rem] lg:grid-cols-[65.79%,31.58%] lg:grid-rows-2 lg:gap-x-8"}>
       <section className={"lg:row-span-full"}>
@@ -9,7 +14,7 @@ export default function Home() {
 
         <div className={"md:grid-cols-3 md:gap-x-6 grid gap-y-8 pt-8 lg:w-[50rem]"}>
           {desserts.map((dessert) => (
-            <DessertCard dessert={dessert} key={dessert.name} />
+            <ProductCard product={dessert} key={dessert.name} cart={cart} dispatch={dispatch} />
           ))}
         </div>
       </section>

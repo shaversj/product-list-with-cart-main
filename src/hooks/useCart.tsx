@@ -1,62 +1,51 @@
-import { useState } from "react";
+"use client";
 
-export type Cart = {
-  items: {
-    name: string;
-    quantity: number;
-    price: number;
-  }[];
-};
+import { Cart } from "@/types/cart/cart";
+import { Product } from "@/types/dessert/product";
 
-export default function useCart() {
-  const [cart, setCart] = useState<Cart>({ items: [] });
+import { useReducer } from "react";
 
-  const addToCart = (item: { name: string; price: number }) => {
-    if (cart.items.some((cartItem) => cartItem.name === item.name)) {
-      setCart({
-        items: cart.items.map((cartItem) => {
-          if (cartItem.name === item.name) {
-            return {
-              ...cartItem,
-              quantity: cartItem.quantity + 1,
-            };
-          }
-          return cartItem;
-        }),
-      });
-    } else {
-      setCart({
-        items: [...cart.items, { name: item.name, price: item.price, quantity: 1 }],
-      });
+export default function useCart({ initialCart }: { initialCart: Cart }) {
+  const cartReducer = (state: Cart, action: { type: string; payload: Product }) => {
+    switch (action.type) {
+      case "ADD_TO_CART":
+        if (state.products.some((product) => product.name === action.payload.name)) {
+          return {
+            products: state.products.map((product) => {
+              if (product.name === action.payload.name) {
+                return {
+                  ...product,
+                  quantity: product.quantity! + 1,
+                };
+              }
+              return product;
+            }),
+          };
+        } else {
+          return {
+            products: [...state.products, { ...action.payload, quantity: 1 }],
+          };
+        }
+      case "REMOVE_FROM_CART":
+        return {
+          products: state.products
+            .map((product) => {
+              if (product.name === action.payload.name) {
+                return {
+                  ...product,
+                  quantity: product.quantity! - 1,
+                };
+              }
+              return product;
+            })
+            .filter((product) => product.quantity! > 0),
+        };
+      default:
+        return state;
     }
   };
 
-  const removeFromCart = (item: { name: string; price: number }) => {
-    if (cart.items.some((cartItem) => cartItem.name === item.name)) {
-      setCart({
-        items: cart.items.map((cartItem) => {
-          if (cartItem.name === item.name) {
-            return {
-              ...cartItem,
-              quantity: cartItem.quantity - 1,
-            };
-          }
-          return cartItem;
-        }),
-      });
-    } else {
-      setCart({
-        items: [...cart.items, { name: item.name, price: item.price, quantity: 1 }],
-      });
-    }
+  const [cart, dispatch] = useReducer(cartReducer, initialCart as Cart);
 
-    // Remove item from cart if quantity is 0
-    if (cart.items.some((cartItem) => cartItem.quantity === 0)) {
-      setCart({
-        items: cart.items.filter((cartItem) => cartItem.quantity !== 0),
-      });
-    }
-  };
-
-  return { cart, addToCart, removeFromCart };
+  return { cart, dispatch };
 }
