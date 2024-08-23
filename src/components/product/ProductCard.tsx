@@ -1,6 +1,6 @@
-import QuantitySelector from "@/components/QuantitySelector";
-import AddToCartButton from "@/components/AddToCartButton";
-import { Product } from "@/types/dessert/product";
+import QuantitySelector from "@/components/product/QuantitySelector";
+import AddToCartButton from "@/components/product/AddToCartButton";
+import { Product } from "@/types/product";
 
 export default function ProductCard({ product, cart, dispatch }: { product: Product; cart: any; dispatch: any }) {
   const isItemInCart = cart.products.some((cartItem: Product) => cartItem.name === product.name);

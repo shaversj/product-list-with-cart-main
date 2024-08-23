@@ -1,7 +1,7 @@
 "use client";
 
-import { Cart } from "@/types/cart/cart";
-import { Product } from "@/types/dessert/product";
+import { Cart } from "@/types/cart";
+import { Product } from "@/types/product";
 
 import { useReducer } from "react";
 

@@ -1,4 +1,4 @@
-import { Product } from "@/types/dessert/product";
+import { Product } from "@/types/product";
 
 export default function AddToCartButton({ dispatch, product }: { dispatch: any; product: Product }) {
   return (

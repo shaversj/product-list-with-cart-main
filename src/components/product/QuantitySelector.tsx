@@ -1,5 +1,5 @@
-import { Product } from "@/types/dessert/product";
-import { Cart } from "@/types/cart/cart";
+import { Product } from "@/types/product";
+import { Cart } from "@/types/cart";
 
 export default function QuantitySelector({ dispatch, product, cart }: { dispatch: any; product: Product; cart: Cart }) {
   const getQuantityFromCart = (product: Product) => {
