@@ -13,33 +13,16 @@ export default function Home() {
   const numberOfCartItems = cart.products.reduce((acc, item) => acc + item.quantity!, 0);
 
   return (
-    <div className={"md:w-[43rem] md:px-0 mx-auto sm:px-6 lg:grid lg:w-[76rem] lg:grid-cols-[65.79%,31.58%] lg:grid-rows-2 lg:gap-x-8"}>
+    <div className={"md:w-[43rem] md:px-0 mx-auto sm:px-6 lg:grid lg:w-[76rem] lg:grid-cols-[65.79%,31.58%] lg:grid-rows-[460px,auto] lg:gap-x-8"}>
       <section className={"lg:row-span-full"}>
         <ProductHeader />
         <ProductList products={products} cart={cart} dispatch={dispatch} />
       </section>
 
-      {cart.products.length === 0 ? (
-        <section className={"mt-[2rem] rounded-lg bg-white p-6 lg:col-start-2 lg:row-start-1 lg:mt-[5.5rem] lg:h-[299px]"}>
-          <CartHeader numberOfCartItems={numberOfCartItems} />
-          <EmptyCartMessage />
-        </section>
-      ) : (
-        <section className={"mt-[2rem] rounded-lg bg-white p-6 lg:col-start-2 lg:row-start-1 lg:mt-[5.5rem]"}>
-          <CartHeader numberOfCartItems={numberOfCartItems} />
-          <CartDetails cart={cart} />
-        </section>
-      )}
-
-      {/*<section*/}
-      {/*  className={*/}
-      {/*    "mt-[2rem] rounded-lg bg-white p-6 lg:col-start-2 lg:row-start-1 lg:row-end-1 lg:mt-[5.5rem]" +*/}
-      {/*    (cart.products.length === 0 && " lg:h-[299px]")*/}
-      {/*  }*/}
-      {/*>*/}
-      {/*  <CartHeader numberOfCartItems={numberOfCartItems} />*/}
-      {/*  {cart.products.length === 0 ? <EmptyCartMessage /> : <CartDetails cart={cart} />}*/}
-      {/*</section>*/}
+      <section className={"rounded-lg bg-white pt-6 lg:mt-[5.5rem]" + (cart.products.length === 0 ? " lg:h-[299px]" : "")}>
+        <CartHeader numberOfCartItems={numberOfCartItems} />
+        {cart.products.length === 0 ? <EmptyCartMessage /> : <CartDetails cart={cart} dispatch={dispatch} />}
+      </section>
     </div>
   );
 }
