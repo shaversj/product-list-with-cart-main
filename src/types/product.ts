@@ -6,6 +6,7 @@ export interface Product {
     mobile: string;
     tablet: string;
     desktop: string;
+    thumbnail: string;
   };
   quantity?: number;
 }

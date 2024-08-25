@@ -2,7 +2,7 @@
 
 import { Cart } from "@/types/cart";
 
-export default function CartDetails({ cart, dispatch }: { cart: Cart; dispatch: any }) {
+export default function CartDetails({ cart, dispatch, setShowModal }: { cart: Cart; dispatch: any; setShowModal: any }) {
   const cartTotal = cart.products.reduce((acc, item) => acc + item.price * item.quantity!, 0);
   const USDollar = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -64,7 +64,7 @@ export default function CartDetails({ cart, dispatch }: { cart: Cart; dispatch: 
         </div>
 
         <div className={"pt-6"}>
-          <button className={"w-full rounded-full bg-red py-4 text-white"}>
+          <button className={"w-full rounded-full bg-red py-4 text-white"} onClick={() => setShowModal(true)}>
             <span className={"text-[1rem] leading-[150%]"}>Confirm Order</span>
           </button>
         </div>

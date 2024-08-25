@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={redHatText.variable}>
-        <main className={"min-h-screen bg-rose-50 font-red-hat-text"}>{children}</main>
+        <main className={"min-h-screen bg-rose-50 font-red-hat-text antialiased"}>{children}</main>
       </body>
     </html>
   );

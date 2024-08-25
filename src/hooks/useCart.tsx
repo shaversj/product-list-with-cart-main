@@ -40,6 +40,10 @@ export default function useCart({ initialCart }: { initialCart: Cart }) {
             })
             .filter((product) => product.quantity! > 0),
         };
+      case "CLEAR_CART":
+        return {
+          products: [],
+        };
       default:
         return state;
     }
